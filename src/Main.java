@@ -4,12 +4,11 @@ public class Main {
         System.out.println();
         //Task 1
         System.out.println("Задача 1.");
-        int savings = 0;
-        int monthlySavings = 15_000;
-        int targetAmount = 2_459_000;
+        double savings = 0;
         int months = 0;
-        while (savings < targetAmount) {
-            savings += monthlySavings;
+        while (savings < 2459000) {
+            savings += 15000;
+            savings *= 1.01;
             months++;
             System.out.println("Месяц " + months + ", сумма накоплений равна " + savings + " рублей");
         }
@@ -30,7 +29,7 @@ public class Main {
         System.out.println();
         //Task 3
         System.out.println("Задача 3.");
-        int population = 12_000_000;
+        int population = 12000000;
         double birthRate = 17.0 / 1000;
         double deathRate = 8.0 / 1000;
         int year = 1;
@@ -44,9 +43,9 @@ public class Main {
         System.out.println();
         //Task 4
         System.out.println("Задача 4.");
-        double initialDeposit = 15_000;
+        double initialDeposit = 15000;
         double monthlyPercent = 0.07;
-        double target = 12_000_000;
+        double target = 12000000;
         double currentAmount = initialDeposit;
         int monthAmount = 0;
 
@@ -61,7 +60,7 @@ public class Main {
         //Task 5
         System.out.println("Задача 5.");
         int totalMonths = 24;
-        double savingsPerMonth = 15_000;
+        double savingsPerMonth = 15000;
         double totalSavings = 0;
         int month = 1;
         do {
@@ -74,19 +73,18 @@ public class Main {
         System.out.println();
         //Task 6
         System.out.println("Задача 6.");
-        double initialAmount = 15_000;
+        double initialAmount = 15000.0;
         double monthlyInterestRate = 0.07;
-        int monthTotal = 9 * 12;
-        int monthsInterval = 6;
-        double totalAmount = initialAmount;
-        int monthsPassed = 0;
-        System.out.println("Сумма накоплений каждые полгода:");
-        while (monthsPassed < monthTotal) {
-            for (int i = 1; i <= monthsInterval; i++) {
-                totalAmount += totalAmount * (monthlyInterestRate / 100);
-                monthsPassed++;
+        int years = 9;
+        double amount = initialAmount;
+        int period = 1;
+        System.out.println("Начальная сумма: " + amount);
+        while (period <= 2 * years) {
+            amount *= (1 + monthlyInterestRate);
+            if (period % 2 == 0) {
+                System.out.println("Сумма накоплений через " + (period / 2) + " полгода: " + amount);
             }
-            System.out.printf("После %d месяцев: %.2f рублей\n", monthsPassed, totalAmount);
+            period++;
         }
 
         System.out.println();
@@ -102,20 +100,20 @@ public class Main {
         System.out.println();
         //Task 8
         System.out.println("Задача 8.");
-        int cometPeriod = 79;
         int currentYear = 2024;
         int startYear = currentYear - 200;
-        int endYear = currentYear + 100;
         int cometYear = 0;
-        do {
-            if (cometYear >= startYear && cometYear <= currentYear) {
-                System.out.println("Комета появилась в году: " + cometYear);
+        int year1 = startYear;
+        System.out.println("Годы, когда проходила комета за последние 200 лет:");
+            do {
+                    if ((year1 - cometYear) % 79 == 0) {
+                        System.out.println(year1);
+                    }
+                    year1++;
+                } while (year1 <= currentYear);
+                cometYear = year1 - 1 + (79 - (year1 - 1) % 79); // Вычисляем следующий год появления кометы
+                System.out.println("Следующий год появления кометы: " + cometYear);
             }
-            cometYear += cometPeriod;
-        } while (cometYear <= currentYear);
-        while (cometYear <= endYear) {
-            System.out.println("Следующий год появления кометы: " + cometYear);
-            cometYear += cometPeriod;
         }
-    }
-}
+
+
