@@ -111,7 +111,7 @@ public class Main {
                     }
                     year1++;
                 } while (year1 <= currentYear);
-                cometYear = year1 - 1 + (79 - (year1 - 1) % 79); // Вычисляем следующий год появления кометы
+                cometYear = year1 - 1 + (79 - (year1 - 1) % 79);
                 System.out.println("Следующий год появления кометы: " + cometYear);
             }
         }
